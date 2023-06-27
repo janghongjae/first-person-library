@@ -40,7 +40,7 @@ api.getSearchLibrarys(String keyword, int page)
 ```
 
 - String 타입에 파라미터를 보내면 해당 키워드에 맞는 도서를 검색해줍니다 (검색어, 페이지)
-- <br />
+  <br />
 
 ## 🖥️ Commit  Message
 
