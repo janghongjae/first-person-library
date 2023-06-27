@@ -1,7 +1,8 @@
 # first-person-library-be
-일인칭 서재 나만의 독서 코멘트
+일인칭 서재 나만의 독서 코멘트  
 
 
+ERD
 <p align="center">
   <img src="https://github.com/janghongjae/first-person-library/assets/115918352/e37e61fa-b8d6-4122-bff4-1263a1b5b194" height="300" width="700">
 </p>
