@@ -3,7 +3,7 @@
 
 
 <p align="center">
-  <img src="https://github.com/janghongjae/first-person-library/assets/115918352/e37e61fa-b8d6-4122-bff4-1263a1b5b194" height="500" width="1000">
+  <img src="https://github.com/janghongjae/first-person-library/assets/115918352/e37e61fa-b8d6-4122-bff4-1263a1b5b194" height="450" width="950">
 </p>
 
 > AladinLibraryAPI</br></br>
