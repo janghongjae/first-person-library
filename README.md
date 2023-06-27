@@ -2,7 +2,7 @@
 일인칭 서재 나만의 독서 코멘트  
 <br />
 
-ERD
+## ERD
 <p align="center">
   <img src="https://github.com/janghongjae/first-person-library/assets/115918352/e37e61fa-b8d6-4122-bff4-1263a1b5b194" height="300" width="700">
 </p>
@@ -40,6 +40,7 @@ api.getSearchLibrarys(String keyword, int page)
 ```
 
 - String 타입에 파라미터를 보내면 해당 키워드에 맞는 도서를 검색해줍니다 (검색어, 페이지)
+- <br />
 
 ## 🖥️ Commit  Message
 
