@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.reading.lib.domain.bestbook.mapper.BestBookMapper">
+
+    <delete id="deleteBestBooks">
+        DELETE FROM bestBook
+    </delete>
+
+    <insert id="insertBestBook">
+        INSERT INTO bestSeller (ranking, bookId, commentCount)
+        VALUES (#{ranking}, #{bookId}, #{commentCount})
+    </insert>
+
+    <select id="getBestBooks" resultType="com.reading.lib.domain.bestbook.dto.BestBookDto">
+        SELECT b.ranking, b.bookId, bk.title, bk.author, bk.translator, bk.description, bk.cover
+        FROM bestBook b
+        INNER JOIN book bk ON b.bookId = bk.bookId
+    </select>
+
+</mapper>

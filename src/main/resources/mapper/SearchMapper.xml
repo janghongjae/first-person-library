@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.reading.lib.domain.search.mapper.SearchMapper">
+
+    <delete id="deleteKeywords">
+        DELETE FROM search
+        WHERE userId = #{userId}
+    </delete>
+
+    <delete id="deleteKeyword">
+        DELETE FROM search
+        WHERE keyword = #{keyword} and userId = #{userId}
+    </delete>
+
+    <insert id="insertKeyword">
+        INSERT INTO search (keyword, createdAt, userId)
+        VALUES (#{keyword}, #{createdAt}, #{userId})
+    </insert>
+
+    <update id="updateKeyword">
+        UPDATE search
+        SET createdAt = #{createdAt}
+        WHERE keyword = #{keyword} and userId = #{userId}
+    </update>
+
+    <select id="findByKeyword" resultType="com.reading.lib.domain.search.dto.RecentKeywordDto">
+        SELECT *
+        FROM search
+        WHERE keyword = #{keyword} and userId = #{userId}
+    </select>
+
+    <select id="getRecentKeyword" resultType="com.reading.lib.domain.search.dto.RecentKeywordDto">
+        SELECT keyword
+        FROM search
+        WHERE userId = #{userId}
+        ORDER BY createdAt DESC
+        LIMIT 10
+    </select>
+
+</mapper>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.reading.lib.domain.comment.mapper.CommentMapper">
+
+    <select id="findAllWithPaging" resultMap="commentResponseResultMap">
+        SELECT *
+        FROM comment c
+        JOIN book b ON c.bookId = b.bookId
+        LIMIT #{offset}, #{limit}
+    </select>
+
+    <select id="findById" resultMap="commentResponseResultMap">
+        SELECT *
+        FROM comment c
+        JOIN book b ON c.bookId = b.bookId
+        WHERE c.coId = #{commentId}
+    </select>
+
+    <insert id="insertComment">
+        INSERT INTO comment(coId, content, color, blur, userId, bookId)
+        VALUES (#{commentId}, #{content}, #{color}, #{blur}, #{userId}, #{bookId})
+    </insert>
+
+    <update id="updateComment" parameterType = "com.reading.lib.domain.comment.dto.CommentPatchDto">
+        UPDATE comment
+        SET content = #{content}, bookId = #{bookId}, color = #{color}, blur = #{blur}
+        WHERE coId = #{commentId}
+    </update>
+
+    <delete id="deleteComment">
+        DELETE FROM comment
+        WHERE coId = #{commentId}
+    </delete>
+
+    <select id="countAll" resultType="int">
+        SELECT COUNT(*)
+        FROM comment
+    </select>
+
+    <select id="calculateTotalCommentCount" resultType="com.reading.lib.domain.comment.dto.CommentCountDto">
+        SELECT bookId, COUNT(*) AS commentCount
+        FROM comment
+        GROUP BY bookId
+    </select>
+
+    <select id="hasCommented" resultType="java.lang.Boolean">
+        SELECT EXISTS (
+        SELECT 1
+        FROM comment
+        WHERE userId = #{userId} AND bookId = #{bookId}
+        LIMIT 1
+        )
+    </select>
+
+    <resultMap id="commentResponseResultMap" type="com.reading.lib.domain.comment.dto.CommentResponseDto">
+        <id property="commentId" column="coId" />
+        <result property="content" column="content" />
+        <result property="color" column="color" />
+        <result property="blur" column="blur" />
+        <result property="userId" column="userId" />
+        <association property="bookDto" resultMap="bookResultMap" />
+    </resultMap>
+
+    <resultMap id="bookResultMap" type="com.reading.lib.domain.book.dto.BookDto">
+        <id property="isbn" column="bookId" />
+        <result property="title" column="title" />
+        <result property="link" column="link" />
+        <result property="author" column="author" />
+        <result property="translator" column="translator" />
+        <result property="publisher" column="publisher" />
+        <result property="year" column="year" />
+        <result property="month" column="month" />
+        <result property="description" column="description" />
+        <result property="cover" column="cover" />
+    </resultMap>
+
+</mapper>

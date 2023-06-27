@@ -1,0 +1,30 @@
+# DataBase MySQL
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://first-library.csjzjz2589lr.ap-northeast-2.rds.amazonaws.com:3306/first_library
+    username: admin
+    password: qwer1234
+
+# Mybatis config
+mybatis:
+  mapper-locations: mapper/*.xml
+
+server:
+  port: 4564
+
+aladin:
+  ttbKey: ttbj136811800001
+
+## Method
+#spring.mvc.hiddenmethod.filter.enabled=true
+
+## Devtools LiveReload
+#spring.devtools.livereload.enabled=true
+#spring.devtools.livereload.port=35729
+#
+#spring.thymeleaf.cache=false
+
+## Message
+#spring.messages.basename=messages,errors
+#spring.messages.encoding=UTF-8
