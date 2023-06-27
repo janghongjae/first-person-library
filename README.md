@@ -1,6 +1,11 @@
 # first-person-library-be
 일인칭 서재 나만의 독서 코멘트
 
+
+<p align="center">
+  <img src="[이미지URL](https://github.com/janghongjae/first-person-library/assets/115918352/e37e61fa-b8d6-4122-bff4-1263a1b5b194)">
+</p>
+
 > AladinLibraryAPI</br></br>
 > 인터페이스 AladinAPI
 구현체로 AladinLibraryAPI 사용하시면됩니다
