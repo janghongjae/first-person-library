@@ -3,7 +3,7 @@
 
 
 <p align="center">
-  <img src="[이미지URL](https://github.com/janghongjae/first-person-library/assets/115918352/e37e61fa-b8d6-4122-bff4-1263a1b5b194)">
+  <img src="https://github.com/janghongjae/first-person-library/assets/115918352/e37e61fa-b8d6-4122-bff4-1263a1b5b194">
 </p>
 
 > AladinLibraryAPI</br></br>
