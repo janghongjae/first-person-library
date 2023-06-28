@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.reading.lib.domain.user.mapper.UserMapper">
+
+    <select id="findByEmail" resultType="com.reading.lib.domain.user.dto.UserDto">
+        SELECT *
+        FROM user
+        WHERE userId = #{email}
+    </select>
+
+    <insert id="saveUser">
+        INSERT INTO user(userId)
+        VALUES (#{email})
+    </insert>
+
+</mapper>
