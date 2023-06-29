@@ -10,9 +10,9 @@ public interface CommentService {
 
     CommentResponseDto findCommentById(String commentId);
 
-    void createComment(CommentPostDto commentPostDto);
+    void createComment(CommentPostDto commentPostDto, String userId);
 
-    void updateComment(CommentPostDto commentPostDto);
+    void updateComment(CommentPostDto commentPostDto, String userId);
 
     void deleteComment(String commentId);
 }

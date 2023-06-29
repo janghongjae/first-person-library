@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,30 +24,28 @@ public class SearchController {
 
     @Operation(summary = "최근 검색어 조회", description = "최근 검색어를 조회하는 메서드입니다.")
     @GetMapping
-    public ResponseEntity<List<RecentKeywordDto>> getRecentKeyword()  {
-        String userId = "wkdghdwo12@naver.com"; // 임시
+    public ResponseEntity<List<RecentKeywordDto>> getRecentKeyword(@AuthenticationPrincipal String email)  {
 
-        List<RecentKeywordDto> response = searchService.getRecentKeyword(userId);
+        List<RecentKeywordDto> response = searchService.getRecentKeyword(email);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @Operation(summary = "최근 검색어 전체 삭제", description = "최근 검색어를 전체 삭제하는 메서드입니다.")
     @DeleteMapping("/all")
-    public ResponseEntity deleteKeywords() {
-        String userId = "wkdghdwo12@naver.com"; // 임시
+    public ResponseEntity deleteKeywords(@AuthenticationPrincipal String email) {
 
-        searchService.deleteKeywords(userId);
+        searchService.deleteKeywords(email);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @Operation(summary = "최근 검색어 삭제", description = "최근 검색어를 삭제하는 메서드입니다.")
     @DeleteMapping
-    public ResponseEntity deleteKeyword(@RequestParam(value = "keyword") String keyword) {
-        String userId = "wkdghdwo12@naver.com"; // 임시
+    public ResponseEntity deleteKeyword(@AuthenticationPrincipal String email,
+                                        @RequestParam(value = "keyword") String keyword) {
 
-        searchService.deleteKeyword(keyword, userId);
+        searchService.deleteKeyword(keyword, email);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

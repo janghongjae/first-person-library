@@ -20,14 +20,12 @@ public class BookServiceImpl implements BookService{
     }
 
     @Override
-    public AladinBookDTO searchBook(String query, int page) {
+    public AladinBookDTO searchBook(String query, int page, String userId) {
 
         AladinBookDTO aladinBookDTO = aladinAPI.getSearchBooks(query, page);
 
         aladinAPI.getPubDateHandler(aladinBookDTO.getItem());
         aladinAPI.getAuthorsHandler(aladinBookDTO.getItem());
-
-        String userId = "wkdghdwo12@naver.com"; // 임시
 
         RecentKeywordDto keyword = searchMapper.findByKeyword(query, userId);
 

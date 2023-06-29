@@ -54,7 +54,7 @@ public class CommentServiceImpl implements CommentService {
 
     // 파라미터에 user_id 추가 필요(컨트롤러단에서 로그인정보를 가져와서 id 추출)
     @Override
-    public void createComment(CommentPostDto commentPostDto /*,String userId*/) {
+    public void createComment(CommentPostDto commentPostDto,String userId) {
 
         String commentId = commentPostDto.getCommentId();
         String content = commentPostDto.getContent();
@@ -62,7 +62,6 @@ public class CommentServiceImpl implements CommentService {
         boolean blur = commentPostDto.getBlur();
         BookDto bookDto = commentPostDto.getBookDto();
 
-        String userId = "wkdghdwo12@naver.com"; //임시
         String bookId = bookDto.getIsbn();
 
         /*if (commentMapper.hasCommented(userId, bookId)) {
@@ -81,7 +80,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public void updateComment(CommentPostDto commentPostDto /*,String userId*/) {
+    public void updateComment(CommentPostDto commentPostDto,String userId) {
 
         String commentId = commentPostDto.getCommentId();
         String content = commentPostDto.getContent();
@@ -89,7 +88,6 @@ public class CommentServiceImpl implements CommentService {
         boolean blur = commentPostDto.getBlur();
         BookDto bookDto = commentPostDto.getBookDto();
 
-        String userId = "wkdghdwo12@naver.com"; //임시
         String bookId = bookDto.getIsbn();
 
         String findUserId = findCommentById(commentId).getUserId();

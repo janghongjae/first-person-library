@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "Comment", description = "코멘트 관련 api")
@@ -41,18 +42,20 @@ public class CommentController {
 
     @Operation(summary = "코멘트 등록", description = "코멘트를 등록하는 메서드입니다.")
     @PostMapping
-    public ResponseEntity postComment(@RequestBody CommentPostDto requestBody) {
+    public ResponseEntity postComment(@AuthenticationPrincipal String email,
+                                      @RequestBody CommentPostDto requestBody) {
 
-        commentService.createComment(requestBody);
+        commentService.createComment(requestBody, email);
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @Operation(summary = "코멘트 수정", description = "코멘트를 수정하는 메서드입니다.")
     @PatchMapping
-    public ResponseEntity patchComment(@RequestBody CommentPostDto requestBody) {
+    public ResponseEntity patchComment(@AuthenticationPrincipal String email,
+                                       @RequestBody CommentPostDto requestBody) {
 
-        commentService.updateComment(requestBody);
+        commentService.updateComment(requestBody, email);
 
         return new ResponseEntity<>(HttpStatus.OK);
     }

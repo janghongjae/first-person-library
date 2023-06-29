@@ -4,5 +4,5 @@ import com.reading.lib.global.aladinapi.AladinBookDTO;
 
 public interface BookService {
 
-    AladinBookDTO searchBook(String query, int page);
+    AladinBookDTO searchBook(String query, int page, String userId);
 }
